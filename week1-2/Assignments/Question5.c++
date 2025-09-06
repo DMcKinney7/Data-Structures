@@ -6,14 +6,15 @@
 #include <fstream>
 using namespace std;
 
-bool comp(int a, int b) {
-    return a < b;
+struct vehicle{
+    string VIN;
+    double Price;
+};
+
+bool comp(const vehicle &a, const vehicle &b) {
+    return a.Price < b.Price;
 }
 int main(){
-    struct vehicle{
-        string VIN;
-        double Price;
-    } ;
     int N;//number of vehicles
     cout << "Enter the number of vehicles: " << endl;
     cin >> N;
