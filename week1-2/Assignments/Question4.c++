@@ -49,11 +49,11 @@ int main()
             }
             case '3': {
                 // Load letters from file before sorting
-                letters.clear();
-                ifstream inFile(filePath);
-                char ch;
-                while (inFile.get(ch)) {
-                    letters.push_back(ch);
+                letters.clear(); // Clear previous letters
+                ifstream inFile(filePath); // Open the file
+                char ch; // Variable to hold each character
+                while (inFile.get(ch)) { // Read characters one by one
+                    letters.push_back(ch); // push_back is to add elements to vector
                 }
                 inFile.close();
                 if (!letters.empty()) {
