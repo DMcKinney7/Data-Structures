@@ -14,27 +14,12 @@ int main()
     cin >> UserSelection;
 
     switch(UserSelection) {
-        
-        case '1':
-            newAccount();
-            break;
 
-        case '2':
-            editAccount();
-            break;
-
-        case '3':
-            eraseAccount();
-            break;
-
-        case 'E' || 'e':
-            return 0;
-            break;
-
-        default:
-            cout << "Unknown Selection!" << endl;
-            menu();
-            break;
+        case '1': newAccount(); break;
+        case '2': editAccount(); break;
+        case '3': eraseAccount(); break;
+        case 'E' || 'e': return 0; break;
+        default: cout << "Unknown Selection!" << endl; menu(); break;
     }
 }
 
