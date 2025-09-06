@@ -106,13 +106,13 @@ int countMO(const vector<char>& letters) {
 void sortLetters(char* letters, int listSize)
 {
     // Sort the letters in-place
-    std::sort(letters, letters + listSize);
+    sort(letters, letters + listSize);
 
-    std::cout << "Sorted letters:" << std::endl;
+    cout << "Sorted letters:" << endl;
     for (int i = 0; i < listSize; ++i) {
-        std::cout << letters[i];
+        cout << letters[i];
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 void printLetters(char* letters, int listSize)
