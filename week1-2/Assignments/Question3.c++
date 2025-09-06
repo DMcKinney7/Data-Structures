@@ -3,8 +3,8 @@
 #include <string>
 using namespace std;
 
-void calculateDistance(int time, int speed) { 
-    cout << (time * speed)<< " Meters" << endl;
+int calculateDistance(int time, int speed) { 
+    return(time * speed);
 }
 
 int main() 
@@ -14,7 +14,7 @@ int main()
     cin >> timeInput;
     cout << "Please enter the speed (in Meters/Second): ";
     cin >> speedInput;
-    calculateDistance(timeInput, speedInput);
+    cout << calculateDistance(timeInput, speedInput)<< " Meters" << endl;
 }
 
 /*
