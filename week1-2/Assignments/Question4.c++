@@ -134,11 +134,3 @@ void createFile(string filePath, int listSize)
     cout << "File created." << endl;
     
 }
-
-/*
-Scope
-Write a C++ program that randomly generates 30000 characters (English Letters from A to X, all Uppercase) and then does the following:
-
-    finds how many times the letter ‘O‘ was generated after the letter ‘M’ (How many times the letter 'M’ was followed by ‘O’)?
-    print the letters sorted in increasing (non-decreasing) order.
-*/
