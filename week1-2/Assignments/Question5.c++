@@ -6,6 +6,9 @@
 #include <fstream>
 using namespace std;
 
+bool comp(int a, int b) {
+    return a < b;
+}
 int main(){
     struct vehicle{
         string VIN;
@@ -24,12 +27,13 @@ int main(){
         cin >> vehicles[i].Price;
     }
 
-    // Output all vehicles non-sorted
-    cout << "Vehicles Information (Non-Sorted):" << endl;
+
+    sort(vehicles.begin(), vehicles.end(), comp);
+    cout << "Vehicles Information (Sorted):" << endl;
     for (const vehicle &v : vehicles)
     {
         cout << "VIN: " << v.VIN << ", Price: " << fixed << setprecision(2) << v.Price << endl;
-    }  
+    }
 }
 
 
