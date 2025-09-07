@@ -44,3 +44,5 @@
 *.swp
 .~
 thumbs.db
+Question*
+!Question*.c++
