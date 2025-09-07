@@ -1,39 +1,52 @@
 #include <iostream>
 #include <string>
-#include <ctime>
+#include <iomanip>
 #include <algorithm>
 #include <vector>
 #include <fstream>
+#include <limits>
 using namespace std;
-void menu();
-
-
-int main()
-{
-    struct backAccount{
+struct bankAccount{
     int accountNumber;
     string fullName;
     string emailAddress;
     double accountBalance;
-    };
-    char UserSelection;
+};
+void menu();
+void addAccount(vector<bankAccount>& accounts);
+void printAccounts(vector<bankAccount>& accounts);
 
-    vector<backAccount> accounts;
+void sortAccounts(vector<bankAccount>& accounts);
+
+
+
+bool comp(const bankAccount &a, const bankAccount &b) {
+    return a.accountBalance < b.accountBalance;
+}
+
+int main()
+{
+    char userSelection;
+
+    vector<bankAccount> account;
 
     do
     {
         menu();
-        cin >> UserSelection;
+        cin >> userSelection;
         
-        switch (UserSelection)
+        switch (userSelection)
         {
             case '1':// Add Account
+                addAccount(account);
                 break;
                 
             case '2':// Print Accounts  
+                printAccounts(account);
                 break;
                 
-            case '3':// Sort by balance        
+            case '3':// Sort by balance 
+                sortAccounts(account);       
                 break;
 
             case '4':// Quit
@@ -42,11 +55,11 @@ int main()
 
             default:
                 cout << "Invalid choice. Please select a valid option.\n" << endl;
-                UserSelection = 0;
+                userSelection = 0;
                 break;
         }
 
-    } while (UserSelection != '4');
+    } while (userSelection != '4');
     return 0;
     
 }
@@ -59,113 +72,34 @@ void menu(){
     cout << "\t4: Exit" << endl;
     cout << "\nSelect option: ";
 }
-/*
-Scope
-Question 7:  Bank Accounts
 
-Design and implement a C++ program that reads a number of bank accounts entered by the user and then prints them sorted based on their account balance. The bank account information is entered as a set of four fields (pieces of information) as shown below:
-
-Account Number (integer)
-
-Customer full name (string)
-
-Customer email (string)
-
-Account Balance (double)
-
-The program is expected to read the number of the accounts from the user and then the account information and then prints the records in the format shown below, sorted in decreasing order based on the account balance:
-
-Account Number :  1201077
-
-Name                     :  Jonathan I. Maletic
-
-Email                      :  jmaletic@ksu.edu
-
-Balance                   : 10,000.17
-
--------------------------------------
-
-Note: The records are entered in the following format (4 lines for each account):
-
- 
-
-First Line is the account number
-
-Second Line is full name
-
-Third line is email
-
-Forth line is the available balance
-
- 
-
-Example
-
-(data entered by the user)
-	
-
-Output:
-
-1201077
-
-Jonathan I. Maletic
-
-jmaletic@ksu.edu
-
-10,000.17
-
-1991999
-
-Saleh M. Alnaeli
-
-alnaelis@uwstout.edu
-
-5,000.11
-
-1333333
-
-Bill Bultman
-
-Bill.bultman@uwc.edu
-
-120,000.00
-
- 
-	
-
-Account Number : 1333333
-
-Name           : Bill Bultman
-
-Email          : Bill.bultman@uwc.edu
-
-Balance        : 120,000.00
-
--------------------------------------
-
-Account Number : 1201077
-
-Name           : Jonathan I. Maletic
-
-Email          : jmaletic@ksu.edu
-
-Balance        : 10,000.17
-
--------------------------------------
-
-Account Number : 1991999
-
-Name           : Saleh M. Alnaeli
-
-Email          : alnaelis@uwstout.edu
-
-Balance        : 5,000.11
-
--------------------------------------
-
- 
-
-    Hint: Use multiple (4) arrays to hold the record fields and sort them based on the account balance array.
-    Please take a look at the example posted on Piazza and Canvas (students' information example.)
-
-*/
+void addAccount(vector<bankAccount>& accounts){
+    int accountNumber;
+    string fullName;
+    string emailAddress;
+    double accountBalance;
+    cout << "Please enter the account number: " << endl;
+    cin >> accountNumber;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // clear input buffer
+    cout << "Please enter the full name: " << endl;
+    getline(cin, fullName);
+    cout << "Please enter the email address: " << endl;
+    getline(cin, emailAddress);
+    cout << "Please enter the account balance: " << endl;
+    cin >> accountBalance;
+    bankAccount newAccount = {accountNumber, fullName, emailAddress, accountBalance};
+    accounts.push_back(newAccount);
+}
+void printAccounts(vector<bankAccount>& accounts){
+     for (const bankAccount &v : accounts)
+    {
+        cout << "Account Number: " << v.accountNumber << "Full Name: " << v.fullName << "Email Address: " << v.emailAddress << ", Account Balance: " << fixed << setprecision(2) << v.accountBalance << endl;
+    }
+}
+void sortAccounts(vector<bankAccount>& accounts){
+    sort(accounts.begin(), accounts.end(), comp);
+    for (const bankAccount &v : accounts)
+    {
+        cout << "Account Number: " << v.accountNumber << "Full Name: " << v.fullName << "Email Address: " << v.emailAddress << ", Account Balance: " << fixed << setprecision(2) << v.accountBalance << endl;
+    }
+}
