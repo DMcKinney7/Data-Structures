@@ -65,5 +65,8 @@
         "__verbose_abort": "cpp",
         "ios": "cpp",
         "locale": "cpp"
-    }
+    },
+    "cSpell.words": [
+        "tastic"
+    ]
 }
