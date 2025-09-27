@@ -5,9 +5,6 @@
 #include <iomanip>
 #include <limits>
 
-/**
- * @brief Reads player records from a file into a vector of Player structs.
- */
 void readPlayers(const std::string& filename, std::vector<Player>& players) {
     std::ifstream inFile(filename);
     if (!inFile) {
@@ -34,9 +31,6 @@ void readPlayers(const std::string& filename, std::vector<Player>& players) {
     inFile.close();
 }
 
-/**
- * @brief Prints the player records from a vector in reverse order.
- */
 void printPlayersReverse(const std::vector<Player>& players) {
     std::cout << std::fixed << std::setprecision(1);
     for (int i = players.size() - 1; i >= 0; --i) {
